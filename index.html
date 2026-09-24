@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Café | Home</title>
+
+  <style>
+    :root {
+      --brown: #5a321c;
+      --dark-brown: #351c10;
+      --gold: #d9a066;
+      --cream: #f7efe3;
+      --light: #fffaf3;
+      --text: #3b2a20;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--dark-brown);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      display: none;
+    }
+
+    .logo-text span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 45px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: var(--gold);
+    }
+
+    .hero-text p {
+      margin-bottom: 25px;
+      color: #f5e8d8;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark-brown);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--white);
+      color: var(--white);
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+    }
+
+    /* SECTIONS */
+    section:not(.hero) {
+      padding: 65px 20px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      color: var(--brown);
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--cream);
+      padding: 25px 18px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .feature-card img {
+      width: 55px;
+      height: 55px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+    }
+
+    /* STATS */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 20px;
+    }
+
+    .stat h3 {
+      color: var(--gold);
+      font-size: 30px;
+    }
+
+    .stat p {
+      color: var(--white);
+    }
+
+    /* COURSES */
+    .alt-bg {
+      background: var(--cream);
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .course-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .course-img {
+      background: #ead8c2;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .course-img img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .course-body {
+      padding: 15px;
+    }
+
+    .course-body h3 {
+      color: var(--brown);
+      margin-bottom: 5px;
+    }
+
+    .course-body p {
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-brown);
+      color: var(--white);
+      padding: 45px 20px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h4 {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding-top: 15px;
+      border-top: 1px solid #76533c;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+
+      <a href="index.html" class="logo">
+        <span class="logo-text">BREW <span>CAFÉ</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Menu</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <h1>Welcome to <span>Brew Café</span></h1>
+
+        <p>
+          Brew Café offers premium handcrafted coffee, fresh bakery,
+          seasonal drinks, and a comfortable space for students,
+          office workers, and coffee lovers.
+        </p>
+
+        <a href="courses.html" class="btn btn-primary">
+          Explore Our Menu
+        </a>
+
+        <a href="contact.html" class="btn btn-outline">
+          Contact Us
+        </a>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/hero.svg" alt="Brew Café">
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+  <section>
+    <div class="section-inner">
+
+      <div class="section-title">
+        <h2>Why Choose Brew Café?</h2>
+        <p>
+          Quality coffee, fresh bakery, and a comfortable place for everyone.
+        </p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <img src="images/icon-teachers.svg" alt="Coffee">
+          <h3>Premium Coffee</h3>
+          <p>
+            Carefully crafted coffee made from quality ingredients.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <img src="images/icon-levels.svg" alt="Bakery">
+          <h3>Fresh Bakery</h3>
+          <p>
+            Fresh bakery items are available every day.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <img src="images/icon-results.svg" alt="Drinks">
+          <h3>Seasonal Drinks</h3>
+          <p>
+            Discover new and exciting beverages every season.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <img src="images/icon-support.svg" alt="Payment">
+          <h3>Easy Payment</h3>
+          <p>
+            Pay easily with POS and convenient QR payment.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATS -->
+  <section class="hero">
+    <div class="section-inner stats-bar">
+
+      <div class="stat">
+        <h3>100%</h3>
+        <p>Quality Ingredients</p>
+      </div>
+
+      <div class="stat">
+        <h3>5+</h3>
+        <p>Signature Drinks</p>
+      </div>
+
+      <div class="stat">
+        <h3>Fresh</h3>
+        <p>Bakery Every Day</p>
+      </div>
+
+      <div class="stat">
+        <h3>QR</h3>
+        <p>Easy Payment</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- MENU PREVIEW -->
+  <section class="alt-bg">
+    <div class="section-inner">
+
+      <div class="section-title">
+        <h2>Our Menu</h2>
+        <p>
+          Discover our selection of handcrafted drinks and fresh bakery.
+        </p>
+      </div>
+
+      <div class="courses-grid">
+
+        <div class="course-card">
+          <div class="course-img">
+            <img src="images/course-uk-math.svg" alt="Coffee">
+          </div>
+          <div class="course-body">
+            <h3>Signature Coffee</h3>
+            <p>Fresh handcrafted coffee.</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-img">
+            <img src="images/course-us-math.svg" alt="Drinks">
+          </div>
+          <div class="course-body">
+            <h3>Seasonal Drinks</h3>
+            <p>Special drinks for every season.</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-img">
+            <img src="images/course-igcse.svg" alt="Bakery">
+          </div>
+          <div class="course-body">
+            <h3>Fresh Bakery</h3>
+            <p>Fresh bakery every day.</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-img">
+            <img src="images/course-alevel.svg" alt="Food">
+          </div>
+          <div class="course-body">
+            <h3>Special Menu</h3>
+            <p>Delicious meals and snacks.</p>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-img">
+            <img src="images/course-sat.svg" alt="Takeaway">
+          </div>
+          <div class="course-body">
+            <h3>Takeaway</h3>
+            <p>Quick and convenient.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:36px;">
+        <a href="courses.html" class="btn btn-primary">
+          See Full Menu
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+        <h4>Brew Café</h4>
+        <p>
+          Premium handcrafted coffee, seasonal beverages,
+          and fresh bakery for students, office workers,
+          and coffee lovers.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Menu</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="career.html">Career</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Phone: 089-123-4567</li>
+          <li>Email: info@brewcafe.com</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Brew Café. This is an example website built for a web design class.
+    </div>
+
+  </footer>
+
+</body>
+</html>
